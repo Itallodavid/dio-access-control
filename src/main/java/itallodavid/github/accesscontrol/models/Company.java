@@ -11,10 +11,7 @@ import javax.persistence.*;
 @Getter @Setter
 public class Company {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(length = 11, nullable = false)
+    @Id @Column(length = 14, nullable = false, unique = true)
     private String cnpj;
 
     @Embedded
