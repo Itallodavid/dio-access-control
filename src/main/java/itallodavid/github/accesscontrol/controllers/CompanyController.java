@@ -23,6 +23,11 @@ public class CompanyController {
         return service.companyPage(pageable);
     }
 
+    @GetMapping(path = "/{cnpj}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Company getCompany(final @PathVariable String cnpj) {
+        return service.getCompany(cnpj);
+    }
+
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Company createCompany(@Valid @RequestBody final CompanyCreationDTO dto){
