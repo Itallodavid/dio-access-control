@@ -1,6 +1,7 @@
 package itallodavid.github.accesscontrol.services;
 
 import itallodavid.github.accesscontrol.dto.CompanyCreationDTO;
+import itallodavid.github.accesscontrol.dto.CompanyUpdateDTO;
 import itallodavid.github.accesscontrol.exceptions.EntityAlreadyExistsException;
 import itallodavid.github.accesscontrol.exceptions.EntityNotFoundException;
 import itallodavid.github.accesscontrol.mappers.CompanyMapper;
@@ -46,6 +47,14 @@ public class CompanyService {
         }
 
         Company company = mapper.toEntity(companyCreationDTO);
+        return repository.save(company);
+    }
+
+    @Transactional
+    public Company updateCompany(final String cnpj, final CompanyUpdateDTO dto) throws EntityNotFoundException {
+        this.getCompany(cnpj);
+        Company company = mapper.toEntity(dto);
+        company.setCnpj(cnpj);
         return repository.save(company);
     }
 }
