@@ -44,4 +44,9 @@ public class CompanyController {
         @Valid @RequestBody final CompanyUpdateDTO dto) throws EntityNotFoundException {
         return service.updateCompany(cnpj, dto);
     }
+
+    @DeleteMapping(path = "/{cnpj}")
+    public void deleteCompany(@PathVariable final String cnpj) throws EntityNotFoundException {
+        service.deleteCompany(cnpj);
+    }
 }

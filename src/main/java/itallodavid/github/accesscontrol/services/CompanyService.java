@@ -57,4 +57,10 @@ public class CompanyService {
         company.setCnpj(cnpj);
         return repository.save(company);
     }
+
+    @Transactional
+    public void deleteCompany(final String cnpj) throws EntityNotFoundException {
+        this.getCompany(cnpj);
+        repository.deleteById(cnpj);
+    }
 }
